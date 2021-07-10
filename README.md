@@ -2,4 +2,4 @@
 Patika.dev is a mini product listing application made within the scope of the react native task.
 
 # Demo
-![](src/data/introduction-video.mp4)
+![](src/data/introduction-video.gif)
