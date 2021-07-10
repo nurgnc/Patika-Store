@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+//components
+import SearchBar from './src/components/SearchBar/SearchBar'
+import CardItem from './src/components/CardItem/CardItem'
+//data
+import productData from './src/data/product-data.json'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const renderProducts = ({ item }) => <CardItem products={item} />
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>Patika Store</Text>
+            <FlatList
+                numColumns={2}
+                ListHeaderComponent={() => (<SearchBar />)}
+                keyExtractor={item => item.id.toString()}
+                data={productData}
+                renderItem={renderProducts}
+            />
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
   },
+  title:{
+    fontWeight: 'bold',
+    fontSize: 35,
+    textAlign: 'center',
+    color: 'purple'
+  }
 });
